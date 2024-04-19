@@ -22,3 +22,27 @@ Garruk, Apex Predator
 Nicol Bolas, Dragon-God
 Nahiri, the Harbinger
 Sarkhan Unbroken
+
+刺探地：
+Commercial District
+Elegant Parlor
+Hedge Maze
+Lush Portico
+Meticulous Archive
+Raucous Theater
+Shadowy Backstreet
+Thundering Falls
+Undercity Sewers
+Underground Mortuary
+
+多人地：
+Rejuvenating Springs
+Spectator Seating
+Training Center
+Undergrowth Stadium
+Vault of Champions
+Luxury Suite
+Bountiful Promenade
+Morphic Pool
+Spire Garden
+Sea of Clouds
