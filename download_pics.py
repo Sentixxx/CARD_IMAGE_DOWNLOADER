@@ -68,6 +68,6 @@ for line in lines:
             else:
                 print(f'Failed to get card data for {card_name}.')
     else:
-        break
+        print(f'Failed to get card data for {card_name}.')
 
 print('Card image download script completed.')
