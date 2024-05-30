@@ -1,48 +1,42 @@
-Karn, Scion of Urza
-Tamiyo, the Moon Sage
-Sorin Markov
-Jaya Ballard
-Ajani, Mentor of Heroes
-Dack Fayden
-Domri, Chaos Bringer
-Kaya, Orzhov Usurper
-Elspeth, Knight-Errant
-Liliana, the Last Hope
-Daretti, Ingenious Iconoclast
-Nicol Bolas, Planeswalker
-Ral, Izzet Viceroy
-Teferi, Hero of Dominaria
-Tezzeret, Agent of Bolas
-Vraska, Golgari Queen
-Ugin, the Spirit Dragon
-Gideon Blackblade
-Jace, the Mind Sculptor
-Tezzeret the Seeker
-Garruk, Apex Predator
-Nicol Bolas, Dragon-God
-Nahiri, the Harbinger
-Sarkhan Unbroken
+Bayou
+Scrubland
+Volcanic Island
+Tropical Island
+Tundra
+Plateau
+Savannash
+Underground Sea
+Taiga
+Badlands
 
-刺探地：
-Commercial District
-Elegant Parlor
-Hedge Maze
-Lush Portico
-Meticulous Archive
-Raucous Theater
-Shadowy Backstreet
-Thundering Falls
-Undercity Sewers
-Underground Mortuary
+Blood Crypt
+Breeding Pool
+Godless Shrine
+Hallowed Fountain
+Overgrown Tomb
+Sacred Foundry
+Steam Vents
+Stomping Ground
+Temple Garden
+Watery Grave
 
-多人地：
-Rejuvenating Springs
-Spectator Seating
-Training Center
-Undergrowth Stadium
-Vault of Champions
-Luxury Suite
-Bountiful Promenade
-Morphic Pool
-Spire Garden
-Sea of Clouds
+Greater Auramancy
+Karmic Justice
+Land Tax
+Smothering Tithe
+As Foretold
+Kindred Discovery
+Omniscience
+Rhystic Study
+Bitterblossom
+Grave Pact
+Necropotence
+Polluted Bonds
+Aggravated Assault
+Blood Moon
+Repercussion
+Sneak Attack
+Defense of the Heart
+Doubling Season
+Nature's Will
+Parallel Lives

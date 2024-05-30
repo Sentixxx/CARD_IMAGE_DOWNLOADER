@@ -2,3 +2,4 @@ images/*
 *.png
 cards.txt
 .DS_Store
+venv/

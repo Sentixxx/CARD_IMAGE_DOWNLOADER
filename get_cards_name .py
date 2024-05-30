@@ -11,9 +11,6 @@ def download_image(url, path):
         return True
     return False
 
-# 确定文件和图像保存目录存在
-if not os.path.exists('images'):
-    os.makedirs('images')
 
 # 读取卡牌的信息
 with open('cards.txt', 'r') as file:
