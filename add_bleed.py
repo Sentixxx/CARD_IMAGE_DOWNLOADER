@@ -7,7 +7,7 @@ config = configparser.ConfigParser()
 config.read(os.path.join(cwd,'config.ini'))
 cfg = config["DEFAULT"]
 # 指定加载图片的文件夹和输出图片的文件夹
-input_folder = cfg.get("card_source")
+input_folder = cfg.get("output_dir")
 output_folder = cfg.get("bleed_out_dir")
 bleed_edge = cfg.getint("bleed_edge")
 
