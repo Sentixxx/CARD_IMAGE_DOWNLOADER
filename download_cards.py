@@ -6,19 +6,20 @@ import sys
 import configparser
 import re
 import subprocess
+import uuid
 
 cwd = os.path.dirname(os.path.abspath(__file__))
 config = configparser.ConfigParser()
 config.read(os.path.join(cwd,'config.ini'))
 cfg = config["DEFAULT"]
-
+failed = []
 
 def download_image(url, path):
     response = requests.get(url)
     if response.status_code == 200:
         while(os.path.exists(path)):
             print(f'Image for {path} already exists.')
-            path = path.replace('.png','_copy.png')
+            path = path.replace('.png', f'_{uuid.uuid4()}.png')
         with open(path, 'wb') as img_file:
             img_file.write(response.content)
         return True
@@ -50,6 +51,7 @@ def get_card_data():
     regex , format_str = parse_mode()
     card_data = []
     for line in lines:
+        line = line.strip()
         match = re.match(regex, line)
         if match:
             matched_groups = match.groups()
@@ -96,7 +98,10 @@ def get_card(card,mode):
                     print(f'PNG image for {this_card} saved successfully.')
                     need -= 1
                 else:
+                    print('-----------------------------------------------')
                     print(f'Failed to download PNG image for {this_card}.')
+                    failed.append(card)
+                    print('-----------------------------------------------')
                     break
             if need == 0:
                 return
@@ -110,13 +115,28 @@ def get_card(card,mode):
                             print(f'PNG image for {this_card}, face {i+1} saved successfully.')
                             need -= 1
                         else:
+                            print('-----------------------------------------------')
                             print(f'Failed to download PNG image for {this_card}, face {i+1}.')
+                            failed.append(card)
+                            print('-----------------------------------------------')
                             return
+                    if need == 0 and i == 0:
+                        if 'num' in card:
+                            need = card["num"]
+                        else:
+                            need = 1
+                        
         else:
+            print('-----------------------------------------------')
             print(f'No PNG image found for {this_card}.')
+            failed.append(card)
+            print('-----------------------------------------------')
     else:
+        print('-----------------------------------------------')
         print(f'Failed to get card data for {this_card}.')
+        failed.append(card)
         print(f'Response code: {response.status_code}')
+        print('-----------------------------------------------')
 
 def get_scryfall():
     cards = get_card_data()
@@ -141,6 +161,11 @@ if __name__ == '__main__':
 
     get_scryfall()
     print('Card image download script completed.')
+
+    if failed.__len__() > 0:
+        with open('failed_cards.txt', 'w') as file:
+            for card in failed:
+                file.write(str(card) + '\n')
 
     if cfg.getboolean("add_bleed"):
         print('Bleeding cards...')
