@@ -14,6 +14,7 @@ input_folder = cfg.get("output_dir")
 output_folder = cfg.get("bleed_out_dir")
 fail_folder = cfg.get("fail_dir")
 bleed_edge = cfg.getint("bleed_edge")
+force = cfg.getboolean("force")
 
 def mm_to_inches(mm):
     return mm / 25.4
@@ -59,6 +60,8 @@ def get_dominant_color(img, edge_width, corner_radius):
     return most_color
 # 检测图片四边是否有大量不为黑色的像素
 def check_edge_colors(img, threshold, edge_width, corner_radius):
+    if force:
+        return false
     
     width, height = img.size
 
