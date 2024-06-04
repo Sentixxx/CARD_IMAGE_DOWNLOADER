@@ -61,7 +61,7 @@ def get_dominant_color(img, edge_width, corner_radius):
 # 检测图片四边是否有大量不为黑色的像素
 def check_edge_colors(img, threshold, edge_width, corner_radius):
     if force:
-        return false
+        return False
     
     width, height = img.size
 
