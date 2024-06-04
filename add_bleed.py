@@ -124,24 +124,25 @@ for img_name in os.listdir(input_folder):
             # 计算英寸对应的像素数
             bleed_pixel_width = int(dpi_x * inch_to_pixel)
             bleed_pixel_height = int(dpi_y * inch_to_pixel)
+            most_color = (255, 255, 255, 255)
+            if not force:
+                corners = [
+                    (0, 0),  # 左上角
+                    (img.width - bleed_pixel_width, 0),  # 右上角
+                    (0, img.height - bleed_pixel_height),  # 左下角
+                    (img.width - bleed_pixel_width, img.height - bleed_pixel_height)  # 右下角
+                ]
 
-            corners = [
-                (0, 0),  # 左上角
-                (img.width - bleed_pixel_width, 0),  # 右上角
-                (0, img.height - bleed_pixel_height),  # 左下角
-                (img.width - bleed_pixel_width, img.height - bleed_pixel_height)  # 右下角
-            ]
+                most_color = get_dominant_color(img, edge_width_pixel, corner_radius_pixel)
 
-            most_color = get_dominant_color(img, edge_width_pixel, corner_radius_pixel)
-
-            #修改圆角为方角
-            print(most_color)
-            for corner in corners:
-                x, y = corner
-                img.paste(most_color, (x, y, x + corner_radius_pixel, y + corner_radius_pixel))
-                img.paste(most_color, (x + bleed_pixel_width - corner_radius_pixel, y, x + bleed_pixel_width, y + corner_radius_pixel))
-                img.paste(most_color, (x, y + bleed_pixel_height - corner_radius_pixel, x + corner_radius_pixel, y + bleed_pixel_height))
-                img.paste(most_color, (x + bleed_pixel_width - corner_radius_pixel, y + bleed_pixel_height - corner_radius_pixel, x + bleed_pixel_width, y + bleed_pixel_height))
+                #修改圆角为方角
+                print(most_color)
+                for corner in corners:
+                    x, y = corner
+                    img.paste(most_color, (x, y, x + corner_radius_pixel, y + corner_radius_pixel))
+                    img.paste(most_color, (x + bleed_pixel_width - corner_radius_pixel, y, x + bleed_pixel_width, y + corner_radius_pixel))
+                    img.paste(most_color, (x, y + bleed_pixel_height - corner_radius_pixel, x + corner_radius_pixel, y + bleed_pixel_height))
+                    img.paste(most_color, (x + bleed_pixel_width - corner_radius_pixel, y + bleed_pixel_height - corner_radius_pixel, x + bleed_pixel_width, y + bleed_pixel_height))
 
 
             # 创建新的图片，尺寸为原图加上bleed edge的部分
