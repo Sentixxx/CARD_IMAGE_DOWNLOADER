@@ -13,22 +13,22 @@ cfg = config["DEFAULT"]
 input_folder = cfg.get("output_dir")
 output_folder = cfg.get("bleed_out_dir")
 fail_folder = cfg.get("fail_dir")
-bleed_edge = cfg.getint("bleed_edge")
+corner_radius_mm = 3
 
 def mm_to_inches(mm):
     return mm / 25.4
 
 # inch 到 pixel 的转换和图片的inch大小
-inch_to_pixel = mm_to_inches(3)
+inch_to_pixel = 0.125
 img_width_inch = 2.48
 img_height_inch = 3.46
 
 
 
 # 黑色检测阈值
-black_threshold = 25
+black_threshold = 45
 # 圆角半径及边缘宽度的像素计算
-corner_radius_mm = 3
+
 edge_width_mm = 2.5
 dpi = 300
 corner_radius_pixel = int(dpi * corner_radius_mm / 25.4)
@@ -102,6 +102,8 @@ def get_corner_color(img, corner_size):
     return top_left, top_right, bottom_left,bottom_right
 
 # 遍历指定文件夹中的所有图片
+print("开始处理图片...")
+print("图片输入文件夹：", input_folder)
 for img_name in os.listdir(input_folder):
     if img_name.lower().endswith(('.png', '.jpg', '.jpeg')):
         img_path = os.path.join(input_folder, img_name)
@@ -132,7 +134,7 @@ for img_name in os.listdir(input_folder):
             most_color = get_dominant_color(img, edge_width_pixel, corner_radius_pixel)
 
             #修改圆角为方角
-            print(most_color)
+            # print(most_color)
             for corner in corners:
                 x, y = corner
                 img.paste(most_color, (x, y, x + corner_radius_pixel, y + corner_radius_pixel))

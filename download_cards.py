@@ -94,7 +94,7 @@ def get_card(card,mode):
         print(f'need:{need}')
         if 'image_uris' in card_info and mode in card_info['image_uris']:
             while need > 0:
-                if download_image(card_info['image_uris'][mode], f'images/{this_card}.png'):
+                if download_image(card_info['image_uris'][mode], f'{output_dir}/{this_card}.png'):
                     print(f'PNG image for {this_card} saved successfully.')
                     need -= 1
                 else:
@@ -111,7 +111,7 @@ def get_card(card,mode):
                 if 'image_uris' in face and mode in face['image_uris']:
                     image_url = face['image_uris'][mode]
                     while need > 0:
-                        if download_image(image_url, f'images/{this_card}_face{i+1}.png'):
+                        if download_image(image_url, f'{output_dir}/{this_card}_face{i+1}.png'):
                             print(f'PNG image for {this_card}, face {i+1} saved successfully.')
                             need -= 1
                         else:
@@ -169,6 +169,6 @@ if __name__ == '__main__':
 
     if cfg.getboolean("add_bleed"):
         print('Bleeding cards...')
-        subprocess.run(['venv/Scripts/python.exe', 'add_bleed.py'])
+        subprocess.run(['python', 'add_bleed.py'])
         print('Card bleeding script completed.')
     
