@@ -3,3 +3,4 @@ images/*
 cards.txt
 .DS_Store
 venv/
+*.zip

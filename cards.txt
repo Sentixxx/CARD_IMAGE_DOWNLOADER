@@ -1,2 +1,31 @@
-1 Najeela, the Blade-Blossom (CMR) 514 *E*
-2 An Offer You Can't Refuse (SNC) 464 *F*
+1 (mh3) 359
+1 (mh3) 213
+1 (sld) 1640
+1 (sld) 1596
+1 (sld) 1576
+1 (sld) 1140
+1 (sld) 1030
+1 (sld) 793
+1 (sld) 691
+1 (sld) 672
+1 (sld) 671
+1 (sld) 432
+1 (sld) 300
+1 (mh3) 344
+1 (mh3) 338
+1 (mh3) 330
+1 (mh3) 326
+1 (thb) 236
+1 (slp) 23
+1 (mh2) 306
+2 (mh3) 469
+1 (blb) 289
+1 (blb) 288
+1 (blb) 287
+1 (blb) 340
+1 (blb) 339
+1 (blb) 338
+1 (blb) 337
+1 (blb) 344
+1 (blb) 345
+1 (blb) 353

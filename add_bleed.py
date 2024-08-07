@@ -19,11 +19,18 @@ force = cfg.getboolean("force")
 def mm_to_inches(mm):
     return mm / 25.4
 
+def get_bleed_width():
+    if cfg.get("bleed_mode") == "order":
+        return mm_to_inches(3)
+    else:
+        return 0.125
 # inch 到 pixel 的转换和图片的inch大小
-inch_to_pixel = 0.125
+inch_to_pixel = get_bleed_width()
 img_width_inch = 2.48
 img_height_inch = 3.46
 
+
+corner_radius_mm = 2.5
 
 
 # 黑色检测阈值

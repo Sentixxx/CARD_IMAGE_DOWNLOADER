@@ -14,15 +14,24 @@ config.read(os.path.join(cwd,'config.ini'))
 cfg = config["DEFAULT"]
 failed = []
 
-def download_image(url, path):
-    response = requests.get(url)
-    if response.status_code == 200:
-        while(os.path.exists(path)):
-            print(f'Image for {path} already exists.')
-            path = path.replace('.png', f'_{uuid.uuid4()}.png')
-        with open(path, 'wb') as img_file:
-            img_file.write(response.content)
-        return True
+def download_image(url, path, retries=3):
+    for attempt in range(retries):
+        try:
+            response = requests.get(url, timeout=10)
+            if response.status_code == 200:
+                base, extension = os.path.splitext(path)
+                while os.path.exists(path):
+                    print(f'Image for {path} already exists.')
+                    path = f'{base}_{uuid.uuid4()}{extension}'
+                with open(path, 'wb') as img_file:
+                    img_file.write(response.content)
+                print(f'Image for {path} saved successfully.')
+                return True
+            else:
+                print(f'Failed to download image, status code: {response.status_code}.')
+        except (requests.exceptions.RequestException, requests.exceptions.ChunkedEncodingError) as e:
+            print(f'Error occurred: {e}, retrying {attempt + 1}/{retries}...')
+    print(f'Failed to download image after {retries} attempts.')
     return False
 
 def parse_mode():
