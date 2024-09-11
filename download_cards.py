@@ -86,6 +86,9 @@ def get_card(card,mode):
         url = f'https://api.scryfall.com/cards/{card["set"]}/{card["no"]}'
         this_card = f'{card["set"]} {card["no"]}'
 
+    if cfg.get("lang") == 'cs':
+        url= f'https://api.scryfall.com/cards/search?order=released&dir=desc&q=name%3D{card["name"]}%20lang%3Dzhs'
+
     print(f'Processing {this_card}...')
     print(f'URL: {url}')
     # 在请求前添加随机延迟
@@ -96,6 +99,8 @@ def get_card(card,mode):
     # 检查响应状态
     if response.status_code == 200:
         card_info = response.json()
+        if cfg.get("lang") == 'cs':
+            card_info = response.json()["data"][0]
         if 'num' in card:
             need = card["num"]
         else:
