@@ -12,7 +12,8 @@ with open('cards.txt', 'r' , encoding='utf-8') as file:
 # 处理每一行
 for line in lines:
     # 从每一行中提取集合代码和卡牌编号
-    cn_name = line.strip()
+    num = line.strip().split(' ')[0]
+    cn_name = line.strip().split(' ')[1]
     
     # 在请求前添加随机延迟
     time.sleep(random.uniform(0.05, 0.1)) # 随机延迟50到100毫秒

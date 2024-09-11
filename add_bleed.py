@@ -2,6 +2,7 @@ from PIL import Image, ImageStat, ImageDraw
 import os
 import configparser
 import numpy as np
+import tqdm
 
 # 配置文件路径及读取
 cwd = os.path.dirname(os.path.abspath(__file__))
@@ -114,7 +115,7 @@ def get_corner_color(img, corner_size):
 # 遍历指定文件夹中的所有图片
 print("开始处理图片...")
 print("图片输入文件夹：", input_folder)
-for img_name in os.listdir(input_folder):
+for img_name in tqdm.tqdm(os.listdir(input_folder)):
     if img_name.lower().endswith(('.png', '.jpg', '.jpeg')):
         img_path = os.path.join(input_folder, img_name)
         print("正在处理图片：", img_path)

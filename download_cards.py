@@ -7,6 +7,7 @@ import configparser
 import re
 import subprocess
 import uuid
+import tqdm
 
 cwd = os.path.dirname(os.path.abspath(__file__))
 config = configparser.ConfigParser()
@@ -151,8 +152,8 @@ def get_scryfall():
     cards = get_card_data()
     print(cards)
     mode = cfg.get("mode")
-    for card in cards:
-        get_card(card,mode)
+    for card in tqdm.tqdm(cards):
+        get_card(card, mode)
 
 
 
