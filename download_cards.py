@@ -99,6 +99,14 @@ def get_card(card,mode):
     # 检查响应状态
     if response.status_code == 200:
         card_info = response.json()
+        if response.json()["data"].__len__() != 1 or response.json()["data"][0]["name"].lower() != this_card.lower():
+            print('-----------------------------------------------')
+            print(f'Failed to download PNG image for {this_card}.')
+                    # failed.append(card)
+            print('-----------------------------------------------')
+            with open('failed_cards.txt', 'a') as file:
+                file.write(this_card + '\n')
+            return
         if cfg.get("lang") == 'cs':
             card_info = response.json()["data"][0]
         if 'num' in card:
@@ -115,8 +123,10 @@ def get_card(card,mode):
                 else:
                     print('-----------------------------------------------')
                     print(f'Failed to download PNG image for {this_card}.')
-                    failed.append(card)
+                    # failed.append(card)
                     print('-----------------------------------------------')
+                    with open('failed_cards.txt', 'a') as file:
+                        file.write(this_card + '\n')
                     break
             if need == 0:
                 return
@@ -126,13 +136,17 @@ def get_card(card,mode):
                 if 'image_uris' in face and mode in face['image_uris']:
                     image_url = face['image_uris'][mode]
                     while need > 0:
+                        if this_card.find('/') != -1:
+                            this_card = this_card.replace('/','-')
                         if download_image(image_url, f'{output_dir}/{this_card}_face{i+1}.png'):
                             print(f'PNG image for {this_card}, face {i+1} saved successfully.')
                             need -= 1
                         else:
                             print('-----------------------------------------------')
                             print(f'Failed to download PNG image for {this_card}, face {i+1}.')
-                            failed.append(card)
+                            with open('failed_cards.txt', 'a') as file:
+                                file.write(this_card + '\n')
+                            # failed.append(card)
                             print('-----------------------------------------------')
                             return
                     if need == 0 and i == 0:
@@ -144,14 +158,18 @@ def get_card(card,mode):
         else:
             print('-----------------------------------------------')
             print(f'No PNG image found for {this_card}.')
-            failed.append(card)
+            # failed.append(card)
             print('-----------------------------------------------')
+            with open('failed_cards.txt', 'a') as file:
+                    file.write(this_card + '\n')
     else:
         print('-----------------------------------------------')
         print(f'Failed to get card data for {this_card}.')
-        failed.append(card)
+        # failed.append(card)
         print(f'Response code: {response.status_code}')
         print('-----------------------------------------------')
+        with open('failed_cards.txt', 'a') as file:
+            file.write(this_card + '\n')
 
 def get_scryfall():
     cards = get_card_data()
