@@ -133,28 +133,35 @@ def handle():
 
                 top = img.crop((0, 0, pixel_width, pixel_height / 80))
                 top = top.resize((1, 1))
+                top.putalpha(255)
 
                 bottom = img.crop(
                     (0, pixel_height - pixel_height / 80, pixel_width, pixel_height)
                 )
                 bottom = bottom.resize((1, 1))
+                bottom.putalpha(255)
                 
                 if not force or not is_transparent:
                     pixel_data = img.load()
 
                     color = top.getpixel((0, 0))
 
-                    for i in range(pixel_height // 40):
+                    for i in range(pixel_height // 50):
                         for j in range(pixel_width):
-                            # if pixel_data[j,i][3] == 0:
-                            pixel_data[j, i] = bottom.getpixel((0, 0))
-
-                    color = bottom.getpixel((0, 0))
-
+                                pixel_data[j,i] = top.getpixel((0,0))
                     for i in range(pixel_height - pixel_height // 40, pixel_height):
                         for j in range(pixel_width):
-                            # if pixel_data[j,i][3] == 0:
-                            pixel_data[j, i] = bottom.getpixel((0, 0))
+                                pixel_data[j,i] = bottom.getpixel((0,0))
+                    for i in range(pixel_width // 40):
+                        for j in range (pixel_height - pixel_height // 10,pixel_height):
+                            pixel_data[i,j] = bottom.getpixel((0,0))
+                        for j in range (pixel_height // 10):
+                            pixel_data[i,j] = top.getpixel((0,0))
+                    for i in range(pixel_width - pixel_width // 40,pixel_width):
+                        for j in range (pixel_height - pixel_height // 10,pixel_height):
+                            pixel_data[i,j] = bottom.getpixel((0,0))
+                        for j in range (pixel_height // 10):
+                            pixel_data[i,j] = top.getpixel((0,0))
                 
                 color = bottom.getpixel((0, 0))
                 new_width = img.width + 2 * bleed_pixel_width
