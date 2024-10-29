@@ -1,6 +1,7 @@
 images/*
 *.png
-cards.txt
+*.txt
 .DS_Store
 venv/
 *.zip
+*.ipynb

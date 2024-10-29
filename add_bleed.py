@@ -109,6 +109,15 @@ def handle():
     # 遍历指定文件夹中的所有图片
     print("开始处理图片...")
     print("图片输入文件夹：", input_folder)
+    print("正在转换格式: jpg -> png")
+    for img_name in tqdm.tqdm(os.listdir(input_folder)):
+        if(img_name.lower().endswith((".jpg"))):
+            img_path = os.path.join(input_folder, img_name)
+            with Image.open(img_path).convert("RGBA") as img:
+                img = img.convert("RGBA")
+                img.save(img_path.replace(".jpg", ".png"))
+                # 删除原文件
+                os.remove(img_path)
     for img_name in tqdm.tqdm(os.listdir(input_folder)):
         if img_name.lower().endswith((".png", ".jpg", ".jpeg")):
             img_path = os.path.join(input_folder, img_name)

@@ -77,7 +77,7 @@ def get_card_data():
 
     return card_data
 
-def get_card(card,mode):
+def get_card(card,mode,lang='en'):
     # 构建API URL
     if 'name' in card and not ('set' in card):
         url = f'https://api.scryfall.com/cards/named?fuzzy={card["name"]}'
@@ -86,7 +86,7 @@ def get_card(card,mode):
         url = f'https://api.scryfall.com/cards/{card["set"]}/{card["no"]}'
         this_card = f'{card["set"]} {card["no"]}'
 
-    if cfg.get("lang") == 'cs':
+    if lang == 'cs':
         url= f'https://api.scryfall.com/cards/search?order=released&dir=desc&q=name%3D{card["name"]}%20lang%3Dzhs'
 
     print(f'Processing {this_card}...')
@@ -99,15 +99,16 @@ def get_card(card,mode):
     # 检查响应状态
     if response.status_code == 200:
         card_info = response.json()
-        if response.json()["data"].__len__() != 1 or response.json()["data"][0]["name"].lower() != this_card.lower():
+        if lang == 'cs' and (response.json()["data"].__len__() != 1 or response.json()["data"][0]["name"].lower() != this_card.lower()):
             print('-----------------------------------------------')
             print(f'Failed to download PNG image for {this_card}.')
                     # failed.append(card)
             print('-----------------------------------------------')
             with open('failed_cards.txt', 'a') as file:
                 file.write(this_card + '\n')
+            get_card(card,mode)
             return
-        if cfg.get("lang") == 'cs':
+        if lang == 'cs':
             card_info = response.json()["data"][0]
         if 'num' in card:
             need = card["num"]
@@ -176,7 +177,7 @@ def get_scryfall():
     print(cards)
     mode = cfg.get("mode")
     for card in tqdm.tqdm(cards):
-        get_card(card, mode)
+        get_card(card, mode , cfg.get("lang"))
 
 
 
