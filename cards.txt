@@ -1,31 +1,79 @@
-1 (mh3) 359
-1 (mh3) 213
-1 (sld) 1640
-1 (sld) 1596
-1 (sld) 1576
-1 (sld) 1140
-1 (sld) 1030
-1 (sld) 793
-1 (sld) 691
-1 (sld) 672
-1 (sld) 671
-1 (sld) 432
-1 (sld) 300
-1 (mh3) 344
-1 (mh3) 338
-1 (mh3) 330
-1 (mh3) 326
-1 (thb) 236
-1 (slp) 23
-1 (mh2) 306
-2 (mh3) 469
-1 (blb) 289
-1 (blb) 288
-1 (blb) 287
-1 (blb) 340
-1 (blb) 339
-1 (blb) 338
-1 (blb) 337
-1 (blb) 344
-1 (blb) 345
-1 (blb) 353
+1 Ancestral Recall
+1 Animate Dead
+3 Atraxa, Grand Unifier
+1 Black Lotus
+1 Brainstorm
+1 Demonic Tutor
+4 Entomb
+4 Force of Will
+1 Gitaxian Probe
+4 Grief
+1 Island
+1 Mental Misstep
+1 Mox Emerald
+1 Mox Jet
+1 Mox Pearl
+1 Mox Ruby
+1 Mox Sapphire
+1 Mystical Tutor
+4 Polluted Delta
+4 Ponder
+4 Psychic Frog
+4 Reanimate
+1 Show and Tell
+1 Swamp
+3 Thoughtseize
+1 Time Walk
+3 Troll of Khazad-dûm
+1 Undercity Sewers
+4 Underground Sea
+1 Vampiric Tutor
+1 Energy Flux
+3 Fatal Push
+2 Force of Negation
+1 Hurkyl's Recall
+4 Leyline of the Void
+1 Null Rod
+1 Pithing Needle
+1 Soul Rend
+1 The Tabernacle at Pendrell Vale
+4 Ancient Tomb
+1 Black Lotus
+1 Chalice of the Void
+3 Crucible of Worlds
+2 Ghost Quarter
+3 Golos, Tireless Pilgrim
+1 Inventors' Fair
+1 Karakas
+1 Karn, the Great Creator
+1 Lodestone Golem
+1 Mana Crypt
+4 Mishra's Workshop
+1 Mox Emerald
+1 Mox Jet
+1 Mox Pearl
+1 Mox Ruby
+1 Mox Sapphire
+4 Nettlecyst
+4 Null Rod
+4 Patchwork Automaton
+1 Pithing Needle
+1 Sol Ring
+4 Sphere of Resistance
+4 Stonecoil Serpent
+1 Strip Mine
+1 Thorn of Amethyst
+1 Tolarian Academy
+1 Trinisphere
+1 Urza's Saga
+1 Vexing Bauble
+4 Wasteland
+1 Cyberdrive Awakener
+3 Dismember
+2 Grafdigger's Cage
+3 Mindbreak Trap
+1 Mycosynth Lattice
+1 Phyrexian Metamorph
+2 Soul-Guide Lantern
+1 The Tabernacle at Pendrell Vale
+1 Walking Ballista

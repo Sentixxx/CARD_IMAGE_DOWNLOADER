@@ -1,2 +1,17 @@
-{'num': 1, 'name': 'Spellseeker'}
-{'num': 1, 'name': 'Spellseeker'}
+cc1 3
+acr 161
+m3c 224
+otj 338
+who 356
+ltr 609
+dsk 310
+dsk 346
+spg 48
+ltc 513
+cmm 94
+2x2 50
+olgc 2023EU
+mh3 446
+wot 55
+mh2 165
+pip 460

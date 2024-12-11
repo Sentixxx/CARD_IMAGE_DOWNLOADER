@@ -15,6 +15,7 @@ config.read(os.path.join(cwd,'config.ini'))
 cfg = config["DEFAULT"]
 failed = []
 
+
 def download_image(url, path, retries=3):
     for attempt in range(retries):
         try:
@@ -34,6 +35,7 @@ def download_image(url, path, retries=3):
             print(f'Error occurred: {e}, retrying {attempt + 1}/{retries}...')
     print(f'Failed to download image after {retries} attempts.')
     return False
+
 
 def parse_mode():
     format_mappings = {
@@ -180,14 +182,12 @@ def get_scryfall():
         get_card(card, mode , cfg.get("lang"))
 
 
-
-        
-
 if __name__ == '__main__':
 
     output_dir = cfg.get("output_dir")
     #确定文件和图像保存目录存在
     print(output_dir)
+
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
